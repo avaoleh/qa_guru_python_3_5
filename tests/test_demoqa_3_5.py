@@ -3,6 +3,7 @@ from selene import be, have
 import os
 
 def test_demoqa_3_5():
+    browser.open('/automation-practice-form')
     browser.element('#firstName').type('Oleg')
     browser.element('#lastName').type('Avakimyanov')
     browser.element('#userEmail').type('testqa@gmail.com')
