@@ -5,15 +5,15 @@ from selene.support.shared import browser
 
 @pytest.fixture(scope="function", autouse=True)
 def browser_management():
-    #browser.config.window_width = 1080
-    #browser.config.window_height = 950
-    browser.config.hold_browser_open = True
-    browser.open('https://demoqa.com/automation-practice-form').driver.maximize_window()
+    browser.config.base_url = 'https://demoqa.com'
+    browser.config.window_width = 2560
+    browser.config.window_height = 1440
 
-    #remove/close all advertisements:
-    ads = browser.all('[id^=google_ads_][id$=container__]')
-    ads.should(have.size_less_than_or_equal(3))
-    ads.perform(command.js.remove)
+
+    # #remove/close all advertisements:
+    # ads = browser.all('[id^=google_ads_][id$=container__]')
+    # ads.should(have.size_less_than_or_equal(3))
+    # ads.perform(command.js.remove)
 
     yield
-    browser.close()
+    browser.quit()
