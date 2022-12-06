@@ -2,8 +2,15 @@ from selene.support.shared import browser
 from selene import be, have
 import os
 
+from selene import have, command
+
 def test_demoqa_3_5():
     browser.open('/automation-practice-form')
+
+    ads = browser.all('[id^=google_ads_][id$=container__]')
+    ads.should(have.size_less_than_or_equal(3))
+    ads.perform(command.js.remove)
+
     browser.element('#firstName').type('Oleg')
     browser.element('#lastName').type('Avakimyanov')
     browser.element('#userEmail').type('testqa@gmail.com')
